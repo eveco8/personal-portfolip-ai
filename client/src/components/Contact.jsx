@@ -104,20 +104,20 @@ export default function Contact({ isUnlocked }) {
               <h4 className="brief__channels-label">OTHER CONTACT CHANNELS:</h4>
               <div className="channel-item">
                 <span className="channel-item__label">EMAIL</span>
-                <a className="channel-item__link" href="mailto:youremail@example.com">
-                  [youremail@example.com]
+                <a className="channel-item__link" href="mailto:evecobos8@gmail.com">
+                  evecobos8@gmail.com
                 </a>
               </div>
               <div className="channel-item">
                 <span className="channel-item__label">GITHUB</span>
-                <a className="channel-item__link" href="https://github.com/" target="_blank" rel="noreferrer">
-                  [github.com/username]
+                <a className="channel-item__link" href="https://github.com/eveco8" target="_blank" rel="noreferrer">
+                  github.com/eveco8
                 </a>
               </div>
               <div className="channel-item">
                 <span className="channel-item__label">LINKEDIN</span>
-                <a className="channel-item__link" href="https://linkedin.com/in/" target="_blank" rel="noreferrer">
-                  [linkedin.com/in/username]
+                <a className="channel-item__link" href="https://www.linkedin.com/in/evelin-j-cobos" target="_blank" rel="noreferrer">
+                  linkedin.com/in/evelin-j-cobos
                 </a>
               </div>
             </div>

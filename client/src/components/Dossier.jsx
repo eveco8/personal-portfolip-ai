@@ -3,13 +3,13 @@ import './Dossier.css';
 
 const SKILLS = [
   { name: 'JavaScript', level: 'Expert', redacted: false },
-  { name: 'React', level: 'Expert', redacted: false },
-  { name: 'Node.js / Express', level: 'Proficient', redacted: false },
-  { name: 'PostgreSQL', level: 'Proficient', redacted: false },
-  { name: '[REDACTED LANGUAGE]', level: '[CLASSIFIED]', redacted: true, clueId: 'CLUE_002', reveal: 'Python' },
-  { name: 'Git / GitHub', level: 'Proficient', redacted: false },
   { name: 'HTML & CSS', level: 'Expert', redacted: false },
-  { name: '[CLASSIFIED FRAMEWORK]', level: '[CLASSIFIED]', redacted: true, clueId: 'CLUE_002b', reveal: 'Next.js' },
+  { name: 'Node.js', level: 'Proficient', redacted: false },
+  { name: 'PostgreSQL', level: 'Proficient', redacted: false },
+  { name: '[CLASSIFIED SKILL]', level: '[CLASSIFIED]', redacted: true, clueId: 'CLUE_002', reveal: 'Responsive Design' },
+  { name: 'React', level: 'Proficient', redacted: false },
+  { name: 'Express', level: 'Proficient', redacted: false },
+  { name: '[CLASSIFIED TOOL]', level: '[CLASSIFIED]', redacted: true, clueId: 'CLUE_002b', reveal: 'Git & GitHub' },
 ];
 
 export default function Dossier({ onClueFound, cluesFound }) {
@@ -97,8 +97,8 @@ export default function Dossier({ onClueFound, cluesFound }) {
                 <span className="id-field__value">Software Engineer</span>
               </div>
               <div className="id-field">
-                <span className="id-field__label">LOCATION</span>
-                <span className="id-field__value">[City, State — Pending]</span>
+                <span className="id-field__label">BACKGROUND</span>
+                <span className="id-field__value">Fmr. English Literature Student</span>
               </div>
               <div className="id-field">
                 <span className="id-field__label">SPECIALTY</span>
@@ -123,20 +123,21 @@ export default function Dossier({ onClueFound, cluesFound }) {
               <em>Subject pauses, as if deciding how much to reveal.</em>
             </p>
             <p className="transcript__response">
-              "My name is Evelin Cobos. I'm a software engineer — the kind who genuinely
-              enjoys debugging at midnight when everyone else has gone home. I care about
-              writing code that solves real problems, not just code that looks impressive
-              on a slide deck."
+              "My name is Evelin Cobos. I'm a developer passionate about creating websites
+              that are both beautiful and functional. Before I wrote a single line of code,
+              I studied English literature — which taught me that the best stories have
+              structure, clarity, and purpose. I bring that same thinking to my code."
             </p>
             <p className="transcript__response">
-              "I started this journey because [<span className="redacted">PERSONAL ORIGIN STORY TO BE ADDED</span>].
-              Since then, I've built [<span className="redacted">NUMBER</span>] projects across the full stack
-              and I'm just getting started."
+              "Good design should be invisible. It just works. Since making the switch to
+              software engineering, I've been building projects in JavaScript, HTML, CSS,
+              Node.js, and beyond — and I'm just getting started."
             </p>
             <p className="transcript__prompt">DETECTIVE: "What drives you?"</p>
             <p className="transcript__response">
-              "Solving problems that matter. I want to build things that [<span className="redacted">PERSONAL MISSION STATEMENT TO BE ADDED</span>].
-              Every line of code is a clue toward something better."
+              "Science fiction, coffee shops, photography — and the next interesting problem
+              to solve. I want to build things that feel effortless to use but are anything
+              but simple under the hood. Every line of code is a clue toward something better."
             </p>
 
             <div className="transcript__footer">
@@ -199,19 +200,19 @@ export default function Dossier({ onClueFound, cluesFound }) {
             <div className="accordion-body paper">
               <div className="bg-check-item">
                 <span className="bg-check__label">INSTITUTION</span>
-                <span className="bg-check__value">[School / Bootcamp Name — To Be Added]</span>
+                <span className="bg-check__value">The Marcy Lab School</span>
               </div>
               <div className="bg-check-item">
                 <span className="bg-check__label">CREDENTIAL</span>
-                <span className="bg-check__value">[Degree / Certificate — To Be Added]</span>
+                <span className="bg-check__value">Software Engineering Fellow</span>
               </div>
               <div className="bg-check-item">
-                <span className="bg-check__label">PERIOD</span>
-                <span className="bg-check__value">[Start Year] – [End Year]</span>
+                <span className="bg-check__label">FOCUS</span>
+                <span className="bg-check__value">Full-Stack JavaScript — HTML, CSS, Node.js, PostgreSQL, React</span>
               </div>
               <div className="bg-check-item">
-                <span className="bg-check__label">ADDITIONAL TRAINING</span>
-                <span className="bg-check__value">[Courses, Certifications — To Be Added]</span>
+                <span className="bg-check__label">PRIOR EDUCATION</span>
+                <span className="bg-check__value">English Literature — background in writing, structure, and storytelling</span>
               </div>
               <div className="bg-check-item bg-check-item--witness">
                 <span className="bg-check__label">WITNESS STATEMENT</span>
@@ -246,22 +247,22 @@ export default function Dossier({ onClueFound, cluesFound }) {
             <div className="accordion-body paper">
               <div className="timeline">
                 <div className="timeline__item">
-                  <span className="timeline__date">[YEAR — PRESENT]</span>
-                  <span className="timeline__role">Software Engineer</span>
-                  <span className="timeline__org">[Company / Role — To Be Added]</span>
-                  <p className="timeline__detail">[Describe role, responsibilities, impact]</p>
+                  <span className="timeline__date">CURRENT</span>
+                  <span className="timeline__role">Software Engineering Fellow</span>
+                  <span className="timeline__org">The Marcy Lab School</span>
+                  <p className="timeline__detail">Building full-stack applications in JavaScript, Node.js, PostgreSQL, and React. Collaborating on team projects, shipping real software, and going deep on computer science fundamentals.</p>
                 </div>
                 <div className="timeline__item">
-                  <span className="timeline__date">[YEAR]</span>
-                  <span className="timeline__role">[Previous Role]</span>
-                  <span className="timeline__org">[Previous Company — To Be Added]</span>
-                  <p className="timeline__detail">[Describe role]</p>
+                  <span className="timeline__date">BEFORE</span>
+                  <span className="timeline__role">English Literature Student</span>
+                  <span className="timeline__org">Prior Academic Study</span>
+                  <p className="timeline__detail">Studied writing, narrative structure, and the architecture of a good story. Turns out code has a lot in common — clarity, intent, and knowing your audience.</p>
                 </div>
                 <div className="timeline__item">
-                  <span className="timeline__date">[YEAR]</span>
-                  <span className="timeline__role">Student / Developer-in-Training</span>
-                  <span className="timeline__org">[School / Program — To Be Added]</span>
-                  <p className="timeline__detail">Where it all began.</p>
+                  <span className="timeline__date">THE SWITCH</span>
+                  <span className="timeline__role">First Line of Code</span>
+                  <span className="timeline__org">Where it all began</span>
+                  <p className="timeline__detail">Discovered that building for the web combines the logic she loved with the creativity she needed. Never looked back.</p>
                 </div>
               </div>
               {cluesFound.has('CLUE_006') && (
