@@ -73,10 +73,11 @@ export default function Dossier({ onClueFound, cluesFound }) {
 
             <div className="dossier__photo-wrap">
               <div className="dossier__photo">
-                <div className="photo-placeholder-lg">
-                  <span>PHOTO</span>
-                  <span>ON FILE</span>
-                </div>
+                <img
+                  src="/ProfilePic.JPG"
+                  alt="Evelin Cobos"
+                  className="dossier__photo-img"
+                />
               </div>
               <div className="stamp stamp--blue" style={{ position: 'absolute', bottom: '8px', right: '8px', fontSize: '0.65rem' }}>
                 IDENTIFIED
