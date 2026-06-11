@@ -1,0 +1,25 @@
+{
+  "name": "personal-portfolip-ai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "cd server && npx nodemon index.js",
+    "dev:client": "cd client && npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eveco8/personal-portfolip-ai.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eveco8/personal-portfolip-ai/issues"
+  },
+  "homepage": "https://github.com/eveco8/personal-portfolip-ai#readme",
+  "devDependencies": {
+    "concurrently": "^10.0.3"
+  }
+}

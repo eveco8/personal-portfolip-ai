@@ -1,0 +1,279 @@
+import { useState } from 'react';
+import './Dossier.css';
+
+const SKILLS = [
+  { name: 'JavaScript', level: 'Expert', redacted: false },
+  { name: 'React', level: 'Expert', redacted: false },
+  { name: 'Node.js / Express', level: 'Proficient', redacted: false },
+  { name: 'PostgreSQL', level: 'Proficient', redacted: false },
+  { name: '[REDACTED LANGUAGE]', level: '[CLASSIFIED]', redacted: true, clueId: 'CLUE_002', reveal: 'Python' },
+  { name: 'Git / GitHub', level: 'Proficient', redacted: false },
+  { name: 'HTML & CSS', level: 'Expert', redacted: false },
+  { name: '[CLASSIFIED FRAMEWORK]', level: '[CLASSIFIED]', redacted: true, clueId: 'CLUE_002b', reveal: 'Next.js' },
+];
+
+export default function Dossier({ onClueFound, cluesFound }) {
+  const [revealedSkills, setRevealedSkills] = useState(new Set());
+  const [educationOpen, setEducationOpen] = useState(false);
+  const [timelineOpen, setTimelineOpen] = useState(false);
+
+  function handleRevealSkill(skill) {
+    if (!skill.redacted || revealedSkills.has(skill.clueId)) return;
+    setRevealedSkills(prev => new Set([...prev, skill.clueId]));
+    if (!cluesFound.has('CLUE_002')) {
+      onClueFound({
+        id: 'CLUE_002',
+        label: 'CLUE #002',
+        text: `Evidence of additional skills found in classified section of dossier. Subject has deeper technical range than initially reported.`,
+      });
+    }
+  }
+
+  function handleEducationOpen() {
+    setEducationOpen(true);
+    if (!cluesFound.has('CLUE_005')) {
+      onClueFound({
+        id: 'CLUE_005',
+        label: 'CLUE #005',
+        text: '"A former professor stated: She was always the last one in the lab and the first to ask how something really worked under the hood."',
+      });
+    }
+  }
+
+  function handleTimelineOpen() {
+    setTimelineOpen(true);
+    if (!cluesFound.has('CLUE_006')) {
+      onClueFound({
+        id: 'CLUE_006',
+        label: 'CLUE #006',
+        text: 'Reconstructed career timeline confirms: the subject has been building things since day one. The work speaks for itself.',
+      });
+    }
+  }
+
+  return (
+    <section className="dossier" id="about">
+      <div className="dossier__header">
+        <div className="tape">◆ SECTION A — SUBJECT DOSSIER ◆ PERSONAL FILE ◆ BACKGROUND CHECK ◆ FIELD NOTES ◆</div>
+      </div>
+
+      <div className="dossier__inner">
+        <div className="dossier__title-row">
+          <h2 className="dossier__title">SUBJECT DOSSIER</h2>
+          <span className="stamp stamp--red" style={{ fontSize: '0.8rem' }}>CONFIDENTIAL</span>
+        </div>
+        <p className="dossier__subtitle">CASE FILE SECTION A — PERSONAL PROFILE &amp; BACKGROUND</p>
+
+        <div className="dossier__columns">
+          {/* LEFT: Profile card */}
+          <div className="dossier__profile paper">
+            <div className="dossier__profile-header">
+              <span className="case-number">SUBJECT ID: EC-2024-001</span>
+            </div>
+
+            <div className="dossier__photo-wrap">
+              <div className="dossier__photo">
+                <div className="photo-placeholder-lg">
+                  <span>PHOTO</span>
+                  <span>ON FILE</span>
+                </div>
+              </div>
+              <div className="stamp stamp--blue" style={{ position: 'absolute', bottom: '8px', right: '8px', fontSize: '0.65rem' }}>
+                IDENTIFIED
+              </div>
+            </div>
+
+            <div className="dossier__id-fields">
+              <div className="id-field">
+                <span className="id-field__label">FULL NAME</span>
+                <span className="id-field__value">Evelin Cobos</span>
+              </div>
+              <div className="id-field">
+                <span className="id-field__label">ALIAS</span>
+                <span className="id-field__value">"The Engineer"</span>
+              </div>
+              <div className="id-field">
+                <span className="id-field__label">OCCUPATION</span>
+                <span className="id-field__value">Software Engineer</span>
+              </div>
+              <div className="id-field">
+                <span className="id-field__label">LOCATION</span>
+                <span className="id-field__value">[City, State — Pending]</span>
+              </div>
+              <div className="id-field">
+                <span className="id-field__label">SPECIALTY</span>
+                <span className="id-field__value">Full-Stack Development</span>
+              </div>
+              <div className="id-field">
+                <span className="id-field__label">STATUS</span>
+                <span className="id-field__value" style={{ color: 'var(--red-dark)', fontWeight: 'bold' }}>ACTIVE — BUILDING</span>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT: Interview transcript */}
+          <div className="dossier__transcript paper">
+            <div className="transcript__header">
+              <span className="case-number">INTERVIEW TRANSCRIPT — SUBJECT SELF-REPORT</span>
+              <span className="stamp stamp--red" style={{ fontSize: '0.6rem', transform: 'rotate(4deg)' }}>VERIFIED</span>
+            </div>
+
+            <p className="transcript__prompt">DETECTIVE: "Tell us about yourself."</p>
+            <p className="transcript__response">
+              <em>Subject pauses, as if deciding how much to reveal.</em>
+            </p>
+            <p className="transcript__response">
+              "My name is Evelin Cobos. I'm a software engineer — the kind who genuinely
+              enjoys debugging at midnight when everyone else has gone home. I care about
+              writing code that solves real problems, not just code that looks impressive
+              on a slide deck."
+            </p>
+            <p className="transcript__response">
+              "I started this journey because [<span className="redacted">PERSONAL ORIGIN STORY TO BE ADDED</span>].
+              Since then, I've built [<span className="redacted">NUMBER</span>] projects across the full stack
+              and I'm just getting started."
+            </p>
+            <p className="transcript__prompt">DETECTIVE: "What drives you?"</p>
+            <p className="transcript__response">
+              "Solving problems that matter. I want to build things that [<span className="redacted">PERSONAL MISSION STATEMENT TO BE ADDED</span>].
+              Every line of code is a clue toward something better."
+            </p>
+
+            <div className="transcript__footer">
+              <span className="case-number">END OF TRANSCRIPT EXCERPT — FULL RECORDING ON FILE</span>
+            </div>
+          </div>
+        </div>
+
+        {/* SKILLS */}
+        <div className="dossier__skills">
+          <h3 className="dossier__section-label">
+            <span className="section-tag">EXHIBIT A-2</span>
+            Known Capabilities — Skills Analysis
+          </h3>
+          <p className="dossier__skills-note">
+            Click <span style={{ color: 'var(--red)' }}>CLASSIFIED</span> items to attempt declassification.
+          </p>
+          <div className="skills-grid">
+            {SKILLS.map((skill, i) => (
+              <div
+                key={i}
+                className={`skill-item ${skill.redacted ? 'skill-item--redacted' : ''} ${revealedSkills.has(skill.clueId) ? 'skill-item--revealed' : ''}`}
+                onClick={() => handleRevealSkill(skill)}
+              >
+                <span className="skill-item__name">
+                  {skill.redacted && !revealedSkills.has(skill.clueId)
+                    ? <span className="redacted">{skill.name}</span>
+                    : (revealedSkills.has(skill.clueId) ? skill.reveal : skill.name)
+                  }
+                </span>
+                <span className="skill-item__level">
+                  {skill.redacted && !revealedSkills.has(skill.clueId)
+                    ? <span className="redacted">{skill.level}</span>
+                    : skill.level
+                  }
+                </span>
+                {skill.redacted && !revealedSkills.has(skill.clueId) && (
+                  <span className="skill-item__hint">[ CLICK TO DECLASSIFY ]</span>
+                )}
+                {revealedSkills.has(skill.clueId) && (
+                  <span className="skill-item__unlocked">🔓 DECLASSIFIED</span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* EDUCATION */}
+        <div className="dossier__accordion">
+          <button
+            className={`accordion-header ${educationOpen ? 'accordion-header--open' : ''}`}
+            onClick={handleEducationOpen}
+          >
+            <span className="section-tag">EXHIBIT A-3</span>
+            <span>Background Check — Education &amp; Training</span>
+            <span className="accordion-arrow">{educationOpen ? '▲' : '▼'}</span>
+            {!cluesFound.has('CLUE_005') && <span className="clue-hint">⚑ Evidence inside</span>}
+          </button>
+          {educationOpen && (
+            <div className="accordion-body paper">
+              <div className="bg-check-item">
+                <span className="bg-check__label">INSTITUTION</span>
+                <span className="bg-check__value">[School / Bootcamp Name — To Be Added]</span>
+              </div>
+              <div className="bg-check-item">
+                <span className="bg-check__label">CREDENTIAL</span>
+                <span className="bg-check__value">[Degree / Certificate — To Be Added]</span>
+              </div>
+              <div className="bg-check-item">
+                <span className="bg-check__label">PERIOD</span>
+                <span className="bg-check__value">[Start Year] – [End Year]</span>
+              </div>
+              <div className="bg-check-item">
+                <span className="bg-check__label">ADDITIONAL TRAINING</span>
+                <span className="bg-check__value">[Courses, Certifications — To Be Added]</span>
+              </div>
+              <div className="bg-check-item bg-check-item--witness">
+                <span className="bg-check__label">WITNESS STATEMENT</span>
+                <span className="bg-check__value">
+                  <em>"She was always the last one in the lab and the first to ask
+                  how something really worked under the hood."</em>
+                  <br /><span style={{ fontSize: '0.7rem', color: 'var(--ink-faded)' }}>— Former Professor</span>
+                </span>
+              </div>
+              {cluesFound.has('CLUE_005') && (
+                <div className="clue-card" style={{ marginTop: '12px' }}>
+                  <span className="clue-card__label">CLUE #005 — COLLECTED</span>
+                  <p className="clue-card__text">"...always the last one in the lab..."</p>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* CAREER TIMELINE */}
+        <div className="dossier__accordion">
+          <button
+            className={`accordion-header ${timelineOpen ? 'accordion-header--open' : ''}`}
+            onClick={handleTimelineOpen}
+          >
+            <span className="section-tag">EXHIBIT A-4</span>
+            <span>Movement History — Career Timeline</span>
+            <span className="accordion-arrow">{timelineOpen ? '▲' : '▼'}</span>
+            {!cluesFound.has('CLUE_006') && <span className="clue-hint">⚑ Evidence inside</span>}
+          </button>
+          {timelineOpen && (
+            <div className="accordion-body paper">
+              <div className="timeline">
+                <div className="timeline__item">
+                  <span className="timeline__date">[YEAR — PRESENT]</span>
+                  <span className="timeline__role">Software Engineer</span>
+                  <span className="timeline__org">[Company / Role — To Be Added]</span>
+                  <p className="timeline__detail">[Describe role, responsibilities, impact]</p>
+                </div>
+                <div className="timeline__item">
+                  <span className="timeline__date">[YEAR]</span>
+                  <span className="timeline__role">[Previous Role]</span>
+                  <span className="timeline__org">[Previous Company — To Be Added]</span>
+                  <p className="timeline__detail">[Describe role]</p>
+                </div>
+                <div className="timeline__item">
+                  <span className="timeline__date">[YEAR]</span>
+                  <span className="timeline__role">Student / Developer-in-Training</span>
+                  <span className="timeline__org">[School / Program — To Be Added]</span>
+                  <p className="timeline__detail">Where it all began.</p>
+                </div>
+              </div>
+              {cluesFound.has('CLUE_006') && (
+                <div className="clue-card" style={{ marginTop: '12px' }}>
+                  <span className="clue-card__label">CLUE #006 — COLLECTED</span>
+                  <p className="clue-card__text">"The subject has been building things since day one."</p>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}

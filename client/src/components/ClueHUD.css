@@ -1,0 +1,75 @@
+.clue-hud {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 500;
+  background: var(--bg-card);
+  border: 1px solid var(--red-dark);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  min-width: 200px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5), 0 0 10px rgba(139,0,0,0.2);
+  transition: border-color 0.2s;
+}
+
+.clue-hud:hover {
+  border-color: var(--red);
+}
+
+.clue-hud__icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.clue-hud__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.clue-hud__label {
+  font-family: var(--font-title);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--red);
+  text-transform: uppercase;
+}
+
+.clue-hud__bar-wrap {
+  height: 4px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.clue-hud__bar {
+  height: 100%;
+  background: var(--red);
+  transition: width 0.5s ease;
+  border-radius: 2px;
+}
+
+.clue-hud__count {
+  font-family: var(--font-type);
+  font-size: 0.7rem;
+  color: var(--paper-aged);
+  letter-spacing: 0.05em;
+}
+
+.clue-hud__ready {
+  font-family: var(--font-title);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--yellow-tape);
+  animation: pulseText 1s ease infinite alternate;
+  white-space: nowrap;
+}
+
+@keyframes pulseText {
+  from { opacity: 0.6; }
+  to   { opacity: 1; }
+}
